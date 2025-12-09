@@ -1,0 +1,248 @@
+body {
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 50px;
+}
+
+#site-title {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    margin: 0;
+    padding: 0;
+
+    font-family: "p22-typewriter", sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+
+    color: rgb(90, 27, 236);        /* purple */
+    -webkit-text-stroke: .5px white;   /* small white stroke */
+    text-shadow: 
+        0 0 10px purple,
+        0 0 20px rgba(220, 148, 240, 0.6);
+
+    z-index: 10; /* stays above video */
+    pointer-events: none; /* not clickable */
+}
+
+#signature {
+    position: absolute;
+    bottom: 25px;
+    right: 35px;
+    font-size: 50px;
+    font-family: "drcarbfred-pro", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: rgba(200, 160, 255, 0.7);
+    text-shadow: 0 0 6px rgba(150, 0, 255, 0.4);
+    pointer-events: none;
+}
+
+
+
+/* Stage box */
+/* Stage box (opaque black instead of image) */
+#stage {
+    width: 80%;
+    max-width: 1000px;
+    min-height: 1000px;
+
+    position: relative;
+    overflow: hidden;
+
+    margin: 100px auto;
+    padding: 100px;
+
+    background: rgba(0, 0, 0, 0.50); /* opaque or semi-opaque black */
+    border: 2px solid rgba(170, 0, 255, 0.4);
+    box-shadow: 
+        0 0 30px rgba(170, 0, 255, 0.5),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+
+/* Ball container */
+#ball-container {
+    width: 800px;
+    height: 800px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Both SVGs stacked */
+.ball-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.ball-face.visible {
+    opacity: 1;
+}
+
+/* Text inside triangle */
+#answerText {
+    position: absolute;
+    width: 140px; /* limits line width so wrapping can occur */
+    text-align: center;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "p22-typewriter", sans-serif;
+    color: rgb(170, 140, 241);
+    text-shadow: 0 0 10px purple;
+
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+
+    /* REQUIRED FOR WRAPPING */
+    white-space: normal;          /* allows multi-line text */
+    overflow-wrap: break-word;    /* breaks long words if needed */
+    line-height: 1.2;             /* tighter spacing for triangle */
+}
+
+
+/* Ask button */
+/* Ask Button Styling */
+#askBtn {
+    margin-top: 40px;
+    padding: 20px 45px;
+    border: none;
+    border-radius: 14px;
+    background: rgb(157, 8, 107);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+    display: none;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    font-family: "cheap-pine", sans-serif;
+    text-align: center;
+    
+}
+
+/* Visible state when switching to sideanswer */
+#askBtn.visible {
+    display: inline-block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Main text (big, snarky) */
+.btn-main {
+    display: block;
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    -webkit-text-stroke: 0.5px #000;
+}
+
+/* Smaller subtitle */
+.btn-sub {
+    display: block;
+    font-size: 18px;
+    margin-top: -6px;
+    opacity: 0.8;
+    font-family: "p22-typewriter", sans-serif;
+}
+
+/* Glow effect */
+#askBtn.glow {
+    animation: pulseButton 2.2s infinite ease-in-out;
+}
+
+@keyframes pulseButton {
+    0% { box-shadow: 0 0 8px rgba(200, 0, 255, 0.4); }
+    50% { box-shadow: 0 0 22px rgba(255, 0, 255, 0.9); }
+    100% { box-shadow: 0 0 8px rgba(200, 0, 255, 0.4); }
+}
+
+#askBtn:hover {
+    transform: scale(1.06);
+}
+
+
+/* Shake animation */
+.shake {
+    animation: shakeAnim 0.6s;
+}
+
+@keyframes shakeAnim {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-20px); }
+    40% { transform: translateX(20px); }
+    60% { transform: translateX(-15px); }
+    80% { transform: translateX(15px); }
+    100% { transform: translateX(0); }
+}
+
+/* Pulsing purple glow */
+.pulse-glow {
+    animation: pulseGlow 2s infinite ease-in-out;
+    filter: drop-shadow(0 0 8px rgba(170, 0, 255, 0.6));
+}
+
+@keyframes pulseGlow {
+    0% {
+        filter: drop-shadow(0 0 4px rgba(170, 0, 255, 0.4));
+    }
+    50% {
+        filter: drop-shadow(0 0 18px rgba(210, 0, 255, 0.9));
+    }
+    100% {
+        filter: drop-shadow(0 0 4px rgba(170, 0, 255, 0.4));
+    }
+}
+/* FULLSCREEN BACKGROUND VIDEO */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* fills screen without distortion */
+    z-index: -2;         /* sits behind everything */
+    pointer-events: none; /* video won't block clicks */
+}
+
+/* OPTIONAL dark overlay to make ball pop */
+#video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* slight darkening */
+    z-index: -1;
+    pointer-events: none;
+}
+#site-footer {
+    margin-top: 100px;
+    padding-bottom: 40px;
+    color: #bbb;
+    font-size: 18px;
+    font-family: "p22-typewriter", sans-serif;
+    line-height: 1.6;
+    text-align: right;
+}
+
+#site-footer a {
+    color: #d7a5ff;
+    text-decoration: none;
+}
+
+#site-footer a:hover {
+    text-decoration: underline;
+}

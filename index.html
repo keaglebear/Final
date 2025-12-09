@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic 8 Ball</title>
+    <link rel="stylesheet" href="https://use.typekit.net/nwi1hoc.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<video id="bg-video" autoplay muted loop playsinline>
+    <source src="assets/14138-254487733.mp4" type="video/mp4">
+</video>
+<div id="video-overlay"></div>
+
+<div id="stage">
+    <h1 id="site-title">Your Daily Dose of Delusion</h1>
+    
+    <div id="ball-container">
+        <object id="side8" class="ball-face visible pulse-glow" data="assets/side8.svg" type="image/svg+xml"></object>
+        <img id="sideanswer" class="ball-face" src="assets/sideanswer.svg" alt="Answer Side">
+
+        <!-- Dynamic answer text overlay -->
+        <div id="answerText"></div>
+    </div>
+
+    <button id="askBtn">
+    <span class="btn-main">Activate Delulu</span>
+    <span class="btn-sub">Ask the 8 ball</span>
+
+</button>
+    <div id="signature">by Kristy Eagle Bear</div>
+
+</div>
+
+<footer id="site-footer">
+    Background – Designed by Gam-Ol  
+    <a href="https://pixabay.com/videos/balls-color-bright-holiday-14138/" target="_blank">
+        https://pixabay.com/videos/balls-color-bright-holiday-14138/
+    </a>
+    <br>
+    P22 Typewriter – Designed by Richard Kegler  
+    <a href="https://fonts.adobe.com/fonts/p22-typewriter" target="_blank">
+        https://fonts.adobe.com/fonts/p22-typewriter
+    </a>
+    <br>
+    Cheap Pine – Designed by Hannes von Döhren  
+    <a href="https://fonts.adobe.com/fonts/cheap-pine" target="_blank">
+        https://fonts.adobe.com/fonts/cheap-pine
+    </a>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
